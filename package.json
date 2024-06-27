@@ -2,7 +2,4 @@
   "scripts": {
     "lint": "eslint ."
   }
-  "devDependencies": {
-    "eslint": "^9.5.0"
-  }
 }
