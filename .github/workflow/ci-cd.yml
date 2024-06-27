@@ -1,5 +1,4 @@
 name: CI/CD Pipeline
-
 on:
   push:
     branches:
@@ -9,39 +8,30 @@ on:
     branches:
       - main
       - master
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14'
-
     - name: Install dependencies
       run: npm install
-
     - name: Run linter
       run: npm run lint
-
     - name: Run tests
       run: npm test
-
     - name: Build Docker image
       run: docker build -t ${{ github.repository }}:${{ github.sha }} .
-
     - name: Log in to Azure Container Registry
       uses: azure/docker-login@v1
       with:
         login-server: <your-acr-login-server>
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
-
     - name: Push Docker image to Azure Container Registry
       run: docker push ${{ github.repository }}:${{ github.sha }}
 
