@@ -26,11 +26,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      #- name: Run lint
-      #  run: npm run lint
+      - name: Run lint
+        run: npm run lint
 
       - name: Build Docker image
-        run: docker build -t meuapp/node-app .
+        run: docker build -t meuapp .
 
       - name: Test Docker image
-        run: docker run -d -p 3000:3000 meuapp/node-app
+        run: docker run -d -p 3000:3000 meuapp
