@@ -30,7 +30,7 @@ jobs:
         run: npm run lint
 
       - name: Build Docker image
-        run: docker build -t node-app/node-app .
+        run: docker build -t node-app .
 
       - name: Test Docker image
-        run: docker run -d -p 3000:3000 node-app/node-app
+        run: docker run -d -p 3000:3000 node-app
